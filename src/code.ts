@@ -1,10 +1,14 @@
 import { Observable } from "rxjs";
 
 var observable = Observable.create((observer: any) => {
-  observer.next("Hello everyone!");
-  observer.next("How are you ?");
-  observer.complete();
-  observer.next("This will not send");
+  try {
+    observer.next("Hello everyone!");
+    observer.next("How are you ?");
+    observer.complete();
+    observer.next("This will not send");
+  } catch (err) {
+    observer.error(err);
+  }
 });
 
 observable.subscribe(
