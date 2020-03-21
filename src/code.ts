@@ -1,24 +1,29 @@
-import { Observable } from "rxjs";
-import { Subject } from "rxjs/Subject";
-import { interval } from "rxjs/Observable/interval";
-import "rxjs/add/operator/skipUntil";
+import { fromEvent, from, of, forkJoin, timer } from "rxjs";
+import { throttleTime, map } from "rxjs/operators";
+import "rxjs/add/operator/map";
 
-var observable1 = Observable.create((data: any) => {
-  var i = 1;
-  setInterval(() => {
-    data.next(i++);
-  }, 1000);
+var button = document.querySelector("button");
+// button.addEventListener("click", event => {
+//   console.log(event);
+// });
+
+// accept click event one per second
+fromEvent(button, "click")
+  .pipe(throttleTime(1000))
+  .subscribe(() => console.log("Clicked"));
+
+// Logs:
+// { foo: 4, bar: 8, baz: 0 } after 4 seconds
+// "This is how it ends!" immediately after
+const observable = forkJoin({
+  a: of(1, 2, 3, 4),
+  b: Promise.resolve(4),
+  c: timer(4000)
 });
-
-var observable2 = new Subject();
-
-setTimeout(() => {
-  observable2.next("Hey!");
-}, 3000);
-
-var newObs = observable1.skipUntil(observable2);
-
-newObs.subscribe((x: any) => addItem(x));
+observable.subscribe({
+  next: value => addItem(JSON.stringify(value)),
+  complete: () => console.log("This is how it ends!")
+});
 
 function addItem(val: any) {
   var node = document.createElement("li");
