@@ -1,5 +1,5 @@
-import { fromEvent, from, of, forkJoin, timer } from "rxjs";
-import { throttleTime, map } from "rxjs/operators";
+import { fromEvent, of, forkJoin, timer } from "rxjs";
+import { throttleTime } from "rxjs/operators";
 import "rxjs/add/operator/map";
 
 var button = document.querySelector("button");
