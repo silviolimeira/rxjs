@@ -1,30 +1,13 @@
 import { Observable } from "rxjs";
-import "rxjs/add/operator/share";
+import { fromEvent } from "rxjs/observable/fromEvent";
 
-// hot observable
-var observable = Observable.create((observer: any) => {
-  try {
-    observer.next("Hello everyone!");
-    observer.next("How are you ?");
-    setInterval(() => {
-      observer.next("I am good");
-    }, 2000);
-  } catch (err) {
-    observer.error(err);
-  }
-}).share();
-
-var observer = observable.subscribe(
-  (x: any) => addItem(x),
-  (error: any) => addItem(error),
-  () => addItem("Completed")
-);
+var observable = fromEvent(document, "mousemove");
 
 setTimeout(() => {
-  var observer2 = observable.subscribe((x: any) =>
-    addItem("Subscriber 2: " + x)
+  var subscription = observable.subscribe((x: any) =>
+    addItem(JSON.stringify(x))
   );
-}, 1000);
+}, 2000);
 
 function addItem(val: any) {
   var node = document.createElement("li");
