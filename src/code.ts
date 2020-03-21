@@ -1,6 +1,7 @@
 import { Observable } from "rxjs";
+import "rxjs/add/operator/share";
 
-// cold observable
+// hot observable
 var observable = Observable.create((observer: any) => {
   try {
     observer.next("Hello everyone!");
@@ -11,7 +12,7 @@ var observable = Observable.create((observer: any) => {
   } catch (err) {
     observer.error(err);
   }
-});
+}).share();
 
 var observer = observable.subscribe(
   (x: any) => addItem(x),
