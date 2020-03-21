@@ -1,5 +1,6 @@
 import { Observable } from "rxjs";
 
+// cold observable
 var observable = Observable.create((observer: any) => {
   try {
     observer.next("Hello everyone!");
