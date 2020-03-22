@@ -4,34 +4,16 @@ import "rxjs/add/operator/map";
 import "rxjs/add/observable/fromEvent";
 
 var button = document.querySelector("button");
-// button.addEventListener("click", event => {
-//   console.log(event);
-// });
-
-// accept click event one per second
-fromEvent(button, "mousedown")
-  .pipe(throttleTime(1000))
-  .subscribe(event => console.log(event));
 
 fromEvent(button, "click")
   .pipe(throttleTime(500))
-  .map(data => {
+  .map((data: MouseEvent) => {
     return data.clientX;
   })
-  .subscribe(coordinate => console.log(coordinate));
-
-// Logs:
-// { foo: 4, bar: 8, baz: 0 } after 4 seconds
-// "This is how it ends!" immediately after
-const observable = forkJoin({
-  a: of(1, 2, 3, 4),
-  b: Promise.resolve(4),
-  c: timer(4000)
-});
-observable.subscribe({
-  next: value => addItem(JSON.stringify(value)),
-  complete: () => console.log("This is how it ends!")
-});
+  .subscribe(coordinate => {
+    console.log(coordinate);
+    addItem(coordinate);
+  });
 
 function addItem(val: any) {
   var node = document.createElement("li");
