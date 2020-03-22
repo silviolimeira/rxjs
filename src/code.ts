@@ -1,39 +1,25 @@
-import {
-  fromEvent,
-  of,
-  forkJoin,
-  timer,
-  Observable,
-  Subject,
-  Subscriber
-} from "rxjs";
+import { Observable } from "rxjs";
+
+import { interval } from "rxjs";
+import { filter } from "rxjs/operators";
 
 var button = document.querySelector("button");
 
-var subject = new Subject();
+var numbers = interval(1000).pipe(
+  filter(value => {
+    return value % 2 == 0;
+  })
+);
 
-subject.subscribe({
+numbers.subscribe({
   next: value => {
     console.log(value);
+    addItem(value);
   },
   error: error => {
-    console.log(error);
-  },
-  complete: () => {
-    console.log("Completed");
+    console.log("Error: ", error);
   }
 });
-
-subject.subscribe({
-  next: value => {
-    console.log("Other: " + value);
-  }
-});
-
-subject.next("A new data piece.");
-//subject.error("Error");
-subject.complete();
-subject.next("A new value.");
 
 function addItem(val: any) {
   var node = document.createElement("li");
