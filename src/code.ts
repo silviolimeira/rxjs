@@ -1,6 +1,7 @@
 import { fromEvent, of, forkJoin, timer } from "rxjs";
-import { throttleTime } from "rxjs/operators";
+import { throttleTime, map } from "rxjs/operators";
 import "rxjs/add/operator/map";
+import "rxjs/add/observable/fromEvent";
 
 var button = document.querySelector("button");
 // button.addEventListener("click", event => {
@@ -8,9 +9,16 @@ var button = document.querySelector("button");
 // });
 
 // accept click event one per second
-fromEvent(button, "click")
+fromEvent(button, "mousedown")
   .pipe(throttleTime(1000))
-  .subscribe(() => console.log("Clicked"));
+  .subscribe(event => console.log(event));
+
+fromEvent(button, "click")
+  .pipe(throttleTime(500))
+  .map(data => {
+    return data.clientX;
+  })
+  .subscribe(coordinate => console.log(coordinate));
 
 // Logs:
 // { foo: 4, bar: 8, baz: 0 } after 4 seconds
