@@ -23,3 +23,16 @@ for (var i = 0; i < buttons.length; i++) {
     console.log("letra: ", letter);
   });
 }
+
+function HouseKeeper(yearsOfExperience, name, cleaningReportoire) {
+  this.yearsOfExperience = yearsOfExperience;
+  this.name = name;
+  this.cleaningReportoire = cleaningReportoire;
+  this.clean = function() {
+    alert("Cleaning in progress...");
+  };
+}
+
+var houseKeeper1 = new HouseKeeper(12, "James", ["bedroom"]);
+
+houseKeeper1.clean();
