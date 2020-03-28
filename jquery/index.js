@@ -40,3 +40,17 @@ console.log("Wait for 12 seconds, and you see button's text change");
 setTimeout(function() {
   $("button").html("<em>Bye</em>");
 }, 12000);
+
+console.log("\n\n");
+
+console.log($("img").attr("src"));
+
+console.log("\n\n");
+
+$("a").attr("href", "https://www.yahoo.com");
+$("a").text("Yahoo");
+
+console.log("\n\n");
+console.log("list classes in the tag with jquery");
+console.log($("h1").attr("class"));
+console.log("\n\n");
