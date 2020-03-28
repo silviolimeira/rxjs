@@ -5,3 +5,6 @@
 
 // Put in the end of body, not need of verifycation like it
 $("h1").css("color", "red");
+
+// Select all the buttons on the document
+$("button");
