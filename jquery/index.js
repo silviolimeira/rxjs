@@ -25,3 +25,18 @@ removeStyle();
 
 // Test if the tag has a class
 console.log($("h1").hasClass("margin-50"));
+
+console.log("Wait for 10 seconds, and you see good bye text in the h1");
+setTimeout(function() {
+  $("h1").text("Bye.");
+}, 10000);
+
+console.log("Wait for 10 seconds, and you see button's text change");
+setTimeout(function() {
+  $("button").text("Don't Click Me");
+}, 10000);
+
+console.log("Wait for 12 seconds, and you see button's text change");
+setTimeout(function() {
+  $("button").html("<em>Bye</em>");
+}, 12000);

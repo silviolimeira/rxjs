@@ -17,3 +17,5 @@ Selecting Elements with jQuery
 
 Manipulating Styles with jQuery
 
+Manipulating Text with jQuery
+
