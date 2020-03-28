@@ -14,3 +14,6 @@ Put the your code javascript file in the site entry, click at minify. Have fun.
 https://www.minifier.org
 
 Selecting Elements with jQuery
+
+Manipulating Styles with jQuery
+
