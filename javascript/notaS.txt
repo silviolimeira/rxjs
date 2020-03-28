@@ -9,3 +9,6 @@ Adding Animation to Websites
 
 How to Incorporate jQuery into Websites
 
+How Minification works to reduce size of file
+Put the your code javascript file in the site entry, click at minify. Have fun.
+https://www.minifier.org
