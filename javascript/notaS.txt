@@ -23,5 +23,7 @@ Manipulating Attributes with jQuery
 
 Add Event Listeners with jQuery
 
+Adding and Removing Elements with jQuery
+
 
 

@@ -89,3 +89,21 @@ $("h2").on("mouseover", function() {
   $("h2").css("color", "blue");
   console.log("change color of the h1");
 });
+
+function hello() {
+  console.log("Hello from the h2 new button.");
+}
+
+// before: add button before h1 tag
+$("h2").before("<button onclick='hello()'>New Before</button>");
+
+// after: add button after h1 tag
+$("h2").after("<button onclick='hello()'>New After</button>");
+
+// prepend add button before h1 content
+$("h2").prepend("<button onclick='hello()'>Prepend</button>");
+
+// append add button after h1 content
+$("h2").append("<button onclick='hello()'>Append</button>");
+
+$("h2").css("background-color", "red");
